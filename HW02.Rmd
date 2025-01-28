@@ -1,7 +1,7 @@
 ---
 title: "HW02"
 author: "Shashwat Mishra"
-date: "2025-01-23"
+date: "https://github.com/shashwat-m/Homework02"
 output:
   pdf_document: default
   html_document: default
@@ -140,7 +140,21 @@ bikes_9am <- bike_data %>%
 
 ggplot(bikes_9am, aes(x = factor(weathersit), y = avg_total, fill = factor(weathersit))) +
   geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Average Ridership at 9 AM by Weather Conditions", x = "Weather Condition", y = "Average Ridership", fill = "Weather Conditions") + scale_fill_manual(values = c("1" = "navyblue", "2" = "lightblue", "3" = "skyblue"),labels = c("1" = "Clear Conditions", "2" = "Misty Conditions/Partly Cloudy","3" = "Precipitation")) + facet_wrap(~ workingday, scales = "free_y", labeller = labeller(workingday = c("0" = "Not Working Day", "1" = "Working Day"))) + theme_minimal() + theme(legend.position = "bottom")
+  labs(title = "Average Ridership at 9 AM by Weather Conditions", 
+       x = "Weather Condition", 
+       y = "Average Ridership", 
+       fill = "Weather Conditions") + 
+  scale_fill_manual(values = c("1" = "navyblue", "2" = "lightblue", "3" = "skyblue"),
+                    labels = c("1" = "Clear Conditions", 
+                             "2" = "Misty Conditions/Partly Cloudy",
+                             "3" = "Precipitation")) + 
+  facet_wrap(~ workingday, 
+             labeller = labeller(workingday = c("0" = "Not Working Day", 
+                                              "1" = "Working Day"))) +  # Remove scales="free_y"
+  coord_cartesian(ylim = c(0, 400)) +  # Set a fixed y-axis limit for both panels
+  theme_minimal() + 
+  theme(legend.position = "bottom")
+
 ```
 This graph illustrates how weather conditions and workdays influence bike ridership at 9 AM. On workdays, ridership is consistently higher across all weather conditions, likely due to commuting. Clear weather sees the most riders, while misty or partly cloudy conditions still maintain moderate ridership. However, when there’s precipitation (rain or snow), the number of riders drops significantly, suggesting that bad weather discourages biking. The trend is similar on non-working days, but overall ridership is lower, likely because fewer people need to travel early in the morning. This highlishgts how weather condition can affect how people ride.
 
@@ -273,15 +287,21 @@ ggplot(artists_with_ten_week_hits, aes(x = reorder(performer, ten_week_hits), y 
   geom_bar(stat = "identity", fill = "skyblue") +
   coord_flip() +  # Flip the axes for better visualization
   labs(
-    title = "Top 19 Artists with at Least 30 Ten-Week Hits (1958-2021)",
+    title = "Top Artists with at Least 30 Ten-Week Hits (1958-2021)",
     x = "Artist",
     y = "Number of Ten-Week Hits"
   ) +
   theme_minimal() +
   theme(
-    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
     axis.title = element_text(size = 14),
     axis.text = element_text(size = 12)
   )
 ```
 This bar plot shows the 19 artists in U.S. musical history who had at least 30 songs appear on the Billboard Top 100 for 10 or more weeks. Each bar represents an artist, and the bar length indicates the total number of such songs for that artist's career. This highlights the longevity and success of these artists across decades.
+
+
+
+
+
+
